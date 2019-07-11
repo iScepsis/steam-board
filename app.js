@@ -21,7 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/get-player-summaries/:playerId*?', indexRouter);
+app.use('/get-global-achievement-percentages-for-app/:gameid', indexRouter);
+app.use('/get-global-stats-for-game/:appid/:count/:name', indexRouter);
 app.use('/get-news-for-app/:appid/:count/:maxlength', indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

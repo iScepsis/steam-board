@@ -22,6 +22,32 @@ router.get('/get-news-for-app/:appid/:count/:maxlength', function(req, res, next
 });
 
 /**
+ * GetGlobalAchievementPercentagesForApp
+ * ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=440&format=xml
+ */
+router.get('/get-global-achievement-percentages-for-app/:gameid', function(req, res, next) {
+  let params = Object.assign({format: 'json'}, req.params);
+  steam.doRequest({
+    response: res,
+    path: 'ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/',
+    params: params
+  });
+});
+
+/**
+ * GetGlobalStatsForGame
+ * ISteamUserStats/GetGlobalStatsForGame/v0001/?format=xml&appid=17740&count=1&name[0]=global.map.emp_isle
+ */
+router.get('/get-global-stats-for-game/:appid/:count/:name', function(req, res, next) {
+  let params = Object.assign({format: 'json'}, req.params);
+  steam.doRequest({
+    response: res,
+    path: 'ISteamUserStats/GetGlobalStatsForGame/v0001/',
+    params: params
+  });
+});
+
+/**
  * GetPlayerSummaries
  */
 router.get('/get-player-summaries/:playerId*?', function(req, res, next) {
