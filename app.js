@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -24,6 +23,10 @@ app.use('/get-player-summaries/:playerId*?', indexRouter);
 app.use('/get-global-achievement-percentages-for-app/:gameid', indexRouter);
 app.use('/get-global-stats-for-game/:appid/:count/:name', indexRouter);
 app.use('/get-news-for-app/:appid/:count/:maxlength', indexRouter);
+app.use('/get-friend-list/:steamid/:relationship', indexRouter);
+app.use('/get-player-achievements/:appid/:steamid', indexRouter);
+app.use('/get-user-stats-for-game/:appid/:steamid', indexRouter);
+app.use('/get-owned-games/:steamid', indexRouter);
 
 
 // catch 404 and forward to error handler

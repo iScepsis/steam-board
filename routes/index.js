@@ -62,4 +62,56 @@ router.get('/get-player-summaries/:playerId*?', function(req, res, next) {
   });
 });
 
+/**
+ * GetFriendList
+ *  ISteamUser/GetFriendList/v0001/?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&steamid=76561197960435530&relationship=friend
+ */
+router.get('/get-friend-list/:steamid/:relationship', function(req, res, next) {
+  let params = Object.assign({format: 'json', key: null}, req.params);
+  steam.doRequest({
+    response: res,
+    path: 'ISteamUser/GetFriendList/v0001/',
+    params: params
+  });
+});
+
+/**
+ * GetPlayerAchievements
+ * ISteamUserStats/GetPlayerAchievements/v0001/?appid=440&key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&steamid=76561197972495328
+ */
+router.get('/get-player-achievements/:appid/:steamid', function(req, res, next) {
+  let params = Object.assign({format: 'json', key: null}, req.params);
+  steam.doRequest({
+    response: res,
+    path: 'ISteamUserStats/GetPlayerAchievements/v0001/',
+    params: params
+  });
+});
+
+/**
+ * GetUserStatsForGame
+ * ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&steamid=76561197972495328
+ */
+router.get('/get-user-stats-for-game/:appid/:steamid', function(req, res, next) {
+  let params = Object.assign({key: null}, req.params);
+  steam.doRequest({
+    response: res,
+    path: 'ISteamUserStats/GetUserStatsForGame/v0002/',
+    params: params
+  });
+});
+
+/**
+ * GetOwnedGames
+ * IPlayerService/GetOwnedGames/v0001/?key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json
+ */
+router.get('/get-owned-games/:steamid', function(req, res, next) {
+  let params = Object.assign({format: 'json', key: null}, req.params);
+  steam.doRequest({
+    response: res,
+    path: 'IPlayerService/GetOwnedGames/v0001/',
+    params: params
+  });
+});
+
 module.exports = router;
