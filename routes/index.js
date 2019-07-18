@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const SteamService = require('../services/SteamService');
 const steam = new SteamService();
 
@@ -80,7 +80,7 @@ router.get('/get-friend-list/:steamid/:relationship', function(req, res, next) {
  * ISteamUserStats/GetPlayerAchievements/v0001/?appid=440&key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&steamid=76561197972495328
  */
 router.get('/get-player-achievements/:appid/:steamid', function(req, res, next) {
-  let params = Object.assign({format: 'json', key: null}, req.params);
+  let params = Object.assign({key: null}, req.params);
   steam.doRequest({
     response: res,
     path: 'ISteamUserStats/GetPlayerAchievements/v0001/',

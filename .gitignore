@@ -77,3 +77,5 @@ typings/
 
 # phpstorm project files
 .idea
+
+config/config.json

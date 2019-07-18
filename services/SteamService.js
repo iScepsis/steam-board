@@ -1,11 +1,12 @@
 const http = require("http");
+const config = require('../config');
 
 function SteamService() {
     this._apiBase = 'http://api.steampowered.com';
 
     this.defaultProps = {
-        key: '{key}',
-        steamids: 76561197998250364
+        key: config.get('steamkey'),
+        steamids: config.get('steamid')
     }
 };
 
