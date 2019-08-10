@@ -22,6 +22,7 @@ SteamService.prototype._setDefaults = function(props) {
 };
 
 SteamService.prototype.doRequest = function({response, path, params = {}}) {
+    response.setHeader('Content-Type', 'application/json');
     let url = this._apiBase + path;// + '?key=' + this._apiKey;
     params = this._setDefaults(params);
     let j = 0;
@@ -32,11 +33,16 @@ SteamService.prototype.doRequest = function({response, path, params = {}}) {
             url += paramPrefix + i + '=' + params[i];
         }
     }
+    resBody = '';
     http.get(url, (res) => {
-        res.on('data', function (body) {
-            response.setHeader('Content-Type', 'application/json');
-            response.send(body);
+        res.on('data', function (chunk) {
+            resBody += chunk.toString();
+        }).on("end", function(){
+            response.send(resBody);
         });
+    }).on("error", (err) => {
+        console.log("Error: " + err.message);
+        response.send({result: false, errMessage: err.message});
     });
 };
 module.exports = SteamService;

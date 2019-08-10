@@ -29,7 +29,7 @@ router.get('/get-global-achievement-percentages-for-app/:gameid', function(req, 
   let params = Object.assign({format: 'json'}, req.params);
   steam.doRequest({
     response: res,
-    path: 'ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/',
+    path: '/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/',
     params: params
   });
 });
@@ -42,7 +42,7 @@ router.get('/get-global-stats-for-game/:appid/:count/:name', function(req, res, 
   let params = Object.assign({format: 'json'}, req.params);
   steam.doRequest({
     response: res,
-    path: 'ISteamUserStats/GetGlobalStatsForGame/v0001/',
+    path: '/ISteamUserStats/GetGlobalStatsForGame/v0001/',
     params: params
   });
 });
@@ -70,7 +70,7 @@ router.get('/get-friend-list/:steamid/:relationship', function(req, res, next) {
   let params = Object.assign({format: 'json', key: null}, req.params);
   steam.doRequest({
     response: res,
-    path: 'ISteamUser/GetFriendList/v0001/',
+    path: '/ISteamUser/GetFriendList/v0001/',
     params: params
   });
 });
@@ -83,7 +83,7 @@ router.get('/get-player-achievements/:appid/:steamid', function(req, res, next) 
   let params = Object.assign({key: null}, req.params);
   steam.doRequest({
     response: res,
-    path: 'ISteamUserStats/GetPlayerAchievements/v0001/',
+    path: '/ISteamUserStats/GetPlayerAchievements/v0001/',
     params: params
   });
 });
@@ -96,7 +96,7 @@ router.get('/get-user-stats-for-game/:appid/:steamid', function(req, res, next) 
   let params = Object.assign({key: null}, req.params);
   steam.doRequest({
     response: res,
-    path: 'ISteamUserStats/GetUserStatsForGame/v0002/',
+    path: '/ISteamUserStats/GetUserStatsForGame/v0002/',
     params: params
   });
 });
@@ -106,10 +106,11 @@ router.get('/get-user-stats-for-game/:appid/:steamid', function(req, res, next) 
  * IPlayerService/GetOwnedGames/v0001/?key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json
  */
 router.get('/get-owned-games/:steamid', function(req, res, next) {
+  console.log('i STILL LIVE HERE');
   let params = Object.assign({format: 'json', key: null}, req.params);
   steam.doRequest({
     response: res,
-    path: 'IPlayerService/GetOwnedGames/v0001/',
+    path: '/IPlayerService/GetOwnedGames/v0001/',
     params: params
   });
 });
