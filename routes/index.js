@@ -114,4 +114,17 @@ router.get('/get-owned-games/:steamid', function(req, res, next) {
   });
 });
 
+/**
+ * GetRecentlyPlayedGames
+ * IPlayerService/GetRecentlyPlayedGames/v0001/?key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json
+ */
+router.get('/recently-played-games/:steamid/:count', function(req, res, next) {
+  let params = Object.assign({format: 'json', key: null}, req.params);
+  steam.doRequest({
+    response: res,
+    path: '/IPlayerService/GetRecentlyPlayedGames/v0001/',
+    params: params
+  });
+});
+
 module.exports = router;

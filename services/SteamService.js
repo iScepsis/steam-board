@@ -8,22 +8,20 @@ function SteamService() {
         key: config.get('steamkey'),
         steamids: config.get('steamid')
     }
-};
+}
 
 SteamService.prototype._setDefaults = function(props) {
-    console.log('props before ', props);
     for (let i in props) {
         if (props[i] === null && this.defaultProps.hasOwnProperty(i) && this.defaultProps[i] !== null) {
             props[i] = this.defaultProps[i];
         }
     }
-    console.log('props after ', props);
     return props;
 };
 
 SteamService.prototype.doRequest = function({response, path, params = {}}) {
     response.setHeader('Content-Type', 'application/json');
-    let url = this._apiBase + path;// + '?key=' + this._apiKey;
+    let url = this._apiBase + path;
     params = this._setDefaults(params);
     let j = 0;
     for (let i in params) {
@@ -33,7 +31,7 @@ SteamService.prototype.doRequest = function({response, path, params = {}}) {
             url += paramPrefix + i + '=' + params[i];
         }
     }
-    resBody = '';
+    let resBody = '';
     http.get(url, (res) => {
         res.on('data', function (chunk) {
             resBody += chunk.toString();
