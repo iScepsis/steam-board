@@ -103,9 +103,9 @@ router.get('/get-user-stats-for-game/:appid/:steamid', function(req, res, next) 
 
 /**
  * GetOwnedGames
- * IPlayerService/GetOwnedGames/v0001/?key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json
+ * IPlayerService/GetOwnedGames/v0001/?key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json&include_appinfo
  */
-router.get('/get-owned-games/:steamid', function(req, res, next) {
+router.get('/get-owned-games/:steamid/:include_appinfo', function(req, res, next) {
   let params = Object.assign({format: 'json', key: null}, req.params);
   steam.doRequest({
     response: res,
