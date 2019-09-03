@@ -30,6 +30,7 @@ app.use('/get-player-achievements/:appid/:steamid', indexRouter);
 app.use('/get-user-stats-for-game/:appid/:steamid', indexRouter);
 app.use('/get-owned-games/:steamid/:include_appinfo', indexRouter);
 app.use('/recently-played-games/:steamid/:count', indexRouter);
+app.use('/schema-for-game/:appid', indexRouter);
 
 
 // catch 404 and forward to error handler

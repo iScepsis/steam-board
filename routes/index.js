@@ -127,4 +127,18 @@ router.get('/recently-played-games/:steamid/:count', function(req, res, next) {
   });
 });
 
+/**
+ * GetSchemaForGame
+ * ISteamUserStats/GetSchemaForGame/v2/?key=XXXXXXXXXXXXXXXXX&appid=218620
+ */
+router.get('/schema-for-game/:appid?', function(req, res, next) {
+  let params = Object.assign({format: 'json', key: null}, req.params);
+  console.log(req.params);
+  steam.doRequest({
+    response: res,
+    path: '/ISteamUserStats/GetSchemaForGame/v2/',
+    params: params
+  });
+});
+
 module.exports = router;
